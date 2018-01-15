@@ -1,0 +1,61 @@
+---
+layout: default
+---
+<article>
+  <div class="banner">
+    <ul class="texts">
+      <p>The best life is use of willing attitude, a happy-go-lucky life. </p>
+      <p>最好的生活是用心甘情愿的态度，过随遇而安的生活。</p>
+    </ul>
+  </div>
+  <div class="bloglist">
+    <h2>
+      <p><span>推荐</span>文章</p>
+    </h2>
+    {% for post in paginator.posts %}
+    <div class="blogs">
+      <h3><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h3>
+      {% if post.img %}
+      <figure><img src={{ "/assets/img/" |  append: post.img | prepend: site.baseurl | replace: '//', '/'}} alert="{{post.title}}" ></figure>
+      {% endif %}
+      <ul>
+        <p>{{post.description}}</p>
+        <a href="{{post.url | prepend: site.baseurl | replace: '//', '/' }}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+      </ul>
+      <p class="autor">
+      <span>分类:【
+        <a href="#">
+          {% if post.category %}
+            {{post.category }}
+          {% else %}
+            日记
+          {% endif %}
+        </a>】
+      </span>
+      <span>标签：
+        {% if post.tags %}
+          {% for tag in post.tags%}
+             <a href="#">{{ tag }}</a> 
+          {% endfor %}
+        {% endif %}
+      </p>
+      <div class="dateview">{{post.date | date: '%Y-%m-%d'}}</div>
+    </div>
+    {% endfor %}
+
+  </div>
+  <div class="page">
+    <!--<a title="Total record"><b>{{paginator.total_pages}}</b></a>-->
+    {% if paginator.previous_page%}
+    <a href="{{paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/'}}"><b>&lt;</b></a>
+    {% endif %}
+    {% if paginator.page%}
+    <b>{{paginator.page}}</b>
+    {% else %}
+    <b>1</b>
+    {% endif %}
+    {% if paginator.next_page%}
+    <a href="{{paginator.next_page_path | prepend: site.baseurl | replace: '//', '/'}}">&gt;</a>
+    {% endif %}
+  </div>  
+</article>

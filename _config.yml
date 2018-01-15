@@ -1,0 +1,31 @@
+# Setup
+title:            Saidyou's Blogs
+description:      '<a href="http://www.angxy.com/" >Blogs</a> of<a href="http://www.angxy.com/about" target="_blank">Saidyou</a>.'
+url:              "artemsheludko.pw"
+baseurl:          
+                  # the optional subpath of your site, e.g. "/blog"
+                  # NB: This applies to all pages in your Jekyll site.
+                  # If you want to move just the blog index pages but keep
+                  # other pages at root, see the paginate_path and
+                  # sidebar_blog_link below.
+
+author:
+  name:           'Saidyou'
+  url:            http://www.angxy.com/about
+
+
+paginate:         6
+paginate_path: '/page:num/'
+                    # Or '/blog/page:num' if you want to move your index pages
+
+
+markdown: kramdown
+plugins_dir:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+include: [_pages]
